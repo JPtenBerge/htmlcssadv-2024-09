@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #blokjes div:nth-child(1) {
+        background: lightgoldenrodyellow;
+      }
+      #blokjes div:nth-child(2) {
+        background: lightpink;
+      }
+      #blokjes div:nth-child(3) {
+        background: lightblue;
+      }
+      #blokjes div:nth-child(4) {
+        background: lightgreen;
+        grid-column-start: 2;
+        /* grid-column-end: 4; */
+        grid-column: 2 / span 2;
+        grid-row: 1;
+      }
+      #blokjes div:nth-child(5) {
+        background: lightcoral;
+      }
+      #blokjes div:nth-child(6) {
+        background: rgba(0, 0, 0, 0.2);
+        color: white;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        grid-column: 3;
+      }
+      #blokjes {
+        display: grid;
+        grid-template-columns: 100px 300px 1fr;
+        grid-template-rows: 100px 200px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      header {
+        background: lightblue;
+      }
+      nav {
+        background: lightgreen;
+      }
+      main {
+        background: lightpink;
+      }
+      aside {
+        background: lightgray;
+      }
+      footer {
+        background: lightsalmon;
+      }
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        display: grid;
+        grid-template:
+          "header header header       header" 60px
+          "nav    main   main-special aside" 1fr
+          "footer footer footer       footer" 40px / 100px 1fr 5fr 100px;
+      }
+      header {
+        grid-area: header;
+      }
+      nav {
+        grid-area: nav;
+      }
+      main {
+        grid-area: main;
+      }
+      main.special {
+        grid-area: main-special;
+        background: lightseagreen;
+      }
+      aside {
+        grid-area: aside;
+      }
+      footer {
+        grid-area: footer;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="blokjes">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div> -->
+    <header>Logo met slogan</header>
+    <nav>
+      <ol>
+        <li><a href="">stat</a></li>
+        <li><a href="">stat</a></li>
+        <li><a href="">stat</a></li>
+      </ol>
+    </nav>
+    <main>main content</main>
+    <main class="special">main content 2</main>
+    <aside>ads</aside>
+    <footer>&copy; JP</footer>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        ol {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            column-gap: 10px;
+            row-gap: 5px;
+        }
+        li {
+            display: grid;
+            grid-column: span 2;
+            grid-template-columns: subgrid;
+            align-items: center;
+        }
+    </style>
+  </head>
+  <body>
+    <form>
+      <ol>
+        <li>
+          <label for="">Naam:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label for="">E-mailadres:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label for="">Woonplaats:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label for="">Je bericht:</label>
+          <textarea></textarea>
+        </li>
+      </ol>
+    </form>
+  </body>
+</html>
