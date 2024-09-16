@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #blokjes {
+            background: orange;
+            padding: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-content: center;
+            height: 300px;
+        }
+        #blokjes div {
+            background: red;
+            margin: 5px;
+            padding: 20px;
+        }
+
+        #layout {
+            display: flex;
+            /* flex-direction: row-reverse; */
+        }
+        nav {
+            background: lightpink;
+            width: 100px;
+            order: 1;
+        }
+        main {
+            background: lightblue;
+            flex-grow: 1;
+            order: -2;
+        }
+        ASIDE {
+            background: lightgoldenrodyellow;
+            width: 100px;
+            order: -8484;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- position -->
+    <!-- display: inline-block -->
+
+    <!-- float -->
+    <!-- tables: a11y -->
+
+    <!-- flexbox -->
+    <!-- grid -->
+
+    <!-- don't use this anywhere, really -->
+    <!-- <div id="blokjes">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+   
+    </div> -->
+
+
+    <div id="layout">
+        <nav>
+            <ol>
+                <li><a href="/">start</a></li>
+                <li><a href="/">portfolio</a></li>
+                <li><a href="/">contact</a></li>
+            </ol>
+        </nav>
+        <main>
+            <h1>Mian content</h1>
+            <p>Hoi!</p>
+            <p>Hoi!</p>
+            <p>Hoi!</p>
+            <p>Hoi!</p>
+        </main>
+        <aside>AD AD AD</aside>
+    </div>
+
+  </body>
+</html>
