@@ -9,9 +9,56 @@
         display: flex;
         flex-direction: column-reverse;
       }
+      @keyframes blinky {
+        from {
+          font-size: 100%;
+          color: blue;
+          opacity: 0;
+        }
+        to {
+          font-size: 200%;
+          color: red;
+          opacity: 1;
+          font-weight: bold;
+        }
+      }
+      blink {
+        animation: blinky 0.2s infinite alternate-reverse;
+      }
     </style>
   </head>
   <body>
+    <article>
+      <h1>Web Worker</h1>
+
+      <input type="number" id="input-fibo" />
+      <output>(hier komt fibo result)</output>
+      <button onclick="berekenFibo()">Bereken</button>
+
+      <br />
+
+      <blink>Blinkert</blink>
+      <script>
+        const berekenFibo = () => {
+          let value = +document.querySelector("#input-fibo").value;
+          document.querySelector('output').innerText = 'Bezig met berekenen!';
+
+          let worker = new Worker('fibo.js');
+          worker.addEventListener('message', e => {
+            document.querySelector('output').innerText = e.data;
+          });
+          worker.postMessage(value);
+        };
+
+        
+
+      </script>
+
+      <!-- <center>centreren</center>
+      <font></font>
+      <marquee>deze is zooooooooooo leuk</marquee> -->
+    </article>
+
     <article>
       <h1>Chat met WebSockets</h1>
       <form onsubmit="say(); return false;" autocomplete="off">
@@ -42,7 +89,7 @@
           clone.querySelector(".name").innerText = msg.name;
           clone.querySelector(".content").innerText = msg.content;
           document.querySelector("#chat-messages").appendChild(clone);
-          document.querySelector("#input-content").value = '';
+          document.querySelector("#input-content").value = "";
           document.querySelector("#input-content").focus();
         });
         const say = () => {

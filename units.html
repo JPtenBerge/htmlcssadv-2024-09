@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* a11y */
+        .px {
+            /* absolute. minst gewaardeerde. pt cm */
+            font-size: 12px;
+        }
+        .em {
+            /* stuk meer accessible */
+            /* relatief tov het parent element */
+            font-size: 0.8em;
+        }
+        .rem {
+            /* stuk meer accessible */
+            /* relatief tov de browserinstelling */
+            font-size: 1.2rem; /* dit zou je default moeten zijn voor font groottes */
+        }
+        .vw {
+            font-size: 4vw;
+            /* text-shadow: 1rem; */
+        }
+
+        /* responsive design */
+        /* reageren op "capabilities" van het device */
+
+        @media (min-width: 700px) {
+            body {
+                background: lightgreen;
+            }
+        }
+        @media (max-width: 699px) {
+            body {
+                background: lightblue;
+            }
+        }
+        @media (prefers-color-scheme: dark) {
+
+        }
+        @media (orientation: portrait) {
+            
+        }
+        @media (prefers-reduced-motion) {
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <p class="px">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, quas!</p>
+    <p class="em">Amet et in aliquid maxime reprehenderit ratione, rem assumenda ea.</p>
+    <p class="rem">Laboriosam consequuntur animi doloribus? Natus rem alias quia architecto dolore.</p>
+    <p class="vw">Beatae maxime odio asperiores laboriosam. Molestiae, quaerat ipsa. Mollitia, repellat.</p>
+
+    <ul class="em">
+        <li>Lorem ipsum dolor sit amet.</li>
+        <li>Fugit autem ipsum tempore beatae?</li>
+        <li>
+            Quisquam voluptas voluptate quia? Sit!
+            <ul class="em">
+                <li>Lorem ipsum dolor sit amet.</li>
+                <li>Fugit autem ipsum tempore beatae?</li>
+                <li>
+                    Quisquam voluptas voluptate quia? Sit!
+                    <ul class="em">
+                        <li>Lorem ipsum dolor sit amet.</li>
+                        <li>Fugit autem ipsum tempore beatae?</li>
+                        <li>Quisquam voluptas voluptate quia? Sit!</li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>
