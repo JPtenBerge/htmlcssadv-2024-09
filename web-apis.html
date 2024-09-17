@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <article>
+      <h1>Geolocation</h1>
+
+      - IP-adres: elk apparaat, kost weinig batterij, niet heel precies
+      - GPS: heel precies ~6 meter, batterij, niet elk apparaat
+      - wifi  ~25m - lekker goedkoop
+      - telefoonmasten  ~500m
+      - bluetooth beacons?
+
+      <button onclick="getLocation();">Get location</button>
+
+      <script>
+        const getLocation = () => {
+          navigator.geolocation.getCurrentPosition(
+            (pos) => {
+              console.log(pos.coords);
+            },
+            (err) => console.error("Oh nee!", err),
+            {
+                enableHighAccuracy: true
+            }
+          );
+        };
+      </script>
+    </article>
+
+    <article>
+      <h1>Web Storage</h1>
+      - storage in de browser specifiek voor die website - ~10MB - supercookie
+      2MB - wordt niet zomaar naar de server gestuurd - key-value pair - Local
+      storage - blijft - eeuwig tot de gebruiker/de developer hem weggooit -
+      Session storage - gaat na je session weg
+
+      <dl>
+        <dt>Local counter:</dt>
+        <dd id="local-counter">(nog niet gezet)</dd>
+        <dt>Session counter:</dt>
+        <dd id="session-counter">(nog niet gezet)</dd>
+      </dl>
+
+      <script>
+        localStorage.counter ??= 0;
+        localStorage.counter++; // node.js global   browser window
+        document.querySelector("#local-counter").innerText =
+          localStorage.counter;
+
+        sessionStorage.counter ??= 0;
+        sessionStorage.counter++; // node.js global   browser window
+        document.querySelector("#session-counter").innerText =
+          sessionStorage.counter;
+      </script>
+
+      indexed database - document store - MongoDB - ~250MB - gestructureerde
+      toegang tot je data - de API is irritant complex - alles is async
+    </article>
+  </body>
+</html>
