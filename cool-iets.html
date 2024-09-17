@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            anchor-name: --mijnbutton;
+        }
+        nav {
+            background: lightgoldenrodyellow;
+            border: 2px solid goldenrod;
+            position: absolute;
+            position-anchor: --mijnbutton;
+            top: anchor(bottom);
+            left: anchor(center);
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="showMenu()">Toon menu</button>
+
+    <nav hidden>
+        <ol>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Doloribus, explicabo nam?</li>
+            <li>Voluptates, quos rem.</li>
+        </ol>
+    </nav>
+    
+    <script>
+        const showMenu = () => {
+            document.querySelector('nav').removeAttribute('hidden');
+        };
+
+    </script>
+
+</body>
+</html>
