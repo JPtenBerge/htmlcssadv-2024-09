@@ -4,16 +4,63 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      #chat-messages {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+    </style>
   </head>
   <body>
     <article>
+      <h1>Chat met WebSockets</h1>
+      <form onsubmit="say(); return false;" autocomplete="off">
+        <input id="input-name" placeholder="Je naam graag" />
+        <input id="input-content" placeholder="Je bericht graag" />
+        <button>Zeg!</button>
+      </form>
+
+      <ol id="chat-messages">
+        <template id="chat-message-template">
+          <li>
+            <strong class="name"></strong>:
+            <span class="content"></span>
+          </li>
+        </template>
+      </ol>
+
+      <script>
+        let socket = new WebSocket("ws://localhost:3000");
+        socket.addEventListener("open", () => console.log("Socket geopend!"));
+        socket.addEventListener("close", () => console.log("Socket gesloten!"));
+        socket.addEventListener("message", (e) => {
+          let msg = JSON.parse(e.data);
+          let template = document.querySelector(
+            "#chat-message-template"
+          ).content;
+          let clone = template.cloneNode(true);
+          clone.querySelector(".name").innerText = msg.name;
+          clone.querySelector(".content").innerText = msg.content;
+          document.querySelector("#chat-messages").appendChild(clone);
+          document.querySelector("#input-content").value = '';
+          document.querySelector("#input-content").focus();
+        });
+        const say = () => {
+          let msg = {
+            name: document.querySelector("#input-name").value,
+            content: document.querySelector("#input-content").value,
+          };
+          socket.send(JSON.stringify(msg));
+        };
+      </script>
+    </article>
+
+    <article>
       <h1>Geolocation</h1>
 
-      - IP-adres: elk apparaat, kost weinig batterij, niet heel precies
-      - GPS: heel precies ~6 meter, batterij, niet elk apparaat
-      - wifi  ~25m - lekker goedkoop
-      - telefoonmasten  ~500m
-      - bluetooth beacons?
+      - IP-adres: elk apparaat, kost weinig batterij, niet heel precies - GPS:
+      heel precies ~6 meter, batterij, niet elk apparaat - wifi ~25m - lekker
+      goedkoop - telefoonmasten ~500m - bluetooth beacons?
 
       <button onclick="getLocation();">Get location</button>
 
@@ -25,7 +72,7 @@
             },
             (err) => console.error("Oh nee!", err),
             {
-                enableHighAccuracy: true
+              enableHighAccuracy: true,
             }
           );
         };
